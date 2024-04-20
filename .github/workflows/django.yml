@@ -24,6 +24,5 @@ jobs:
     - name: Run Tests
       run: |
         pip install Flask
-        pkill -f test.py
         nohup python3  test.py &
         
