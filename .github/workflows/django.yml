@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 jobs:
+
   build:
     runs-on: self-hosted
     strategy:
@@ -19,21 +20,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3
+          python3 -m pip install --upgrade pip
 
       - name: Install dependencies
         run: |
-          pip install Flask
+          python3 -m pip install Flask
 
       - name: Run Tests
         run: |
-          nohup python3 test.py > /dev/null 2>&1 &  # Run in background and redirect output
-          sleep 5  # Give time for the server to start
+          nohup python3 test.py > /dev/null 2>&1 &
+          sleep 5  # Adjust as needed
 
-      # Add a step to stop the Python server after running tests
       - name: Stop Python server
         run: |
-          lsof -ti :5000 | xargs kill -9 || true  # Replace 5000 with the port your Flask server listens on
-      
+          lsof -ti :5000 | xargs kill -9 || true
+
