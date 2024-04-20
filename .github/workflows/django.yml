@@ -25,4 +25,4 @@ jobs:
       run: |
         pip install Flask
         python3  test.py
-        pm2 start test.py
+        
