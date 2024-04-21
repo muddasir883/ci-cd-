@@ -14,10 +14,8 @@ jobs:
       - name: Remove existing directory
         run: rm -rf ci-cd-
 
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          repository: muddasir883/ci-cd-
+      - name: Clone repository
+        run: git clone https://github.com/muddasir883/ci-cd- ci-cd-
 
       - name: Set up Python
         run: |
@@ -35,6 +33,7 @@ jobs:
           cd ci-cd-
           nohup python3 test.py > /dev/null 2>&1 &
           sleep 5  # Adjust as needed
+
 
     
 
