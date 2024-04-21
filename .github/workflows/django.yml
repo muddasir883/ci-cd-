@@ -7,19 +7,14 @@ on:
     branches: [main]
 
 jobs:
-
   build:
     runs-on: self-hosted
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3]
 
     steps:
       - name: Checkout code
         run: git clone https://github.com/muddasir883/ci-cd-.git
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         run: |
           sudo apt-get update
           sudo apt-get install python3
@@ -27,12 +22,15 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd ci-cd-
           python3 -m pip install Flask
 
       - name: Run Tests
         run: |
+          cd ci-cd-
           nohup python3 test.py > /dev/null 2>&1 &
           sleep 5  # Adjust as needed
+
 
     
 
