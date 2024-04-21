@@ -5,7 +5,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('test.html')  # Remove the absolute path
-#def index():
-    # Get the absolute path of the directory containing this script
-if __name__ == '_main_':
+
+if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
