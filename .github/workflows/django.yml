@@ -20,8 +20,8 @@ jobs:
       - name: Set up Python
         run: |
           sudo apt-get update
-          sudo apt-get install python3
-          sudo apt-get install python3-pip
+          sudo apt-get install python3 -y
+          sudo apt-get install python3-pip -y
           python3 -m pip install --upgrade pip
 
       - name: Install dependencies
