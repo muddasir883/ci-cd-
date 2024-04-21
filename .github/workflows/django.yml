@@ -32,7 +32,8 @@ jobs:
       - name: Run Tests
         run: |
           cd ci-cd-
-          nohup python3 test.py > /dev/null 2>&1 &
+          pm2 stop test.py
+          pm2 start test.py > /dev/null 2>&1 &
           sleep 5  # Adjust as needed
 
 
