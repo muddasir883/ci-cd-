@@ -32,7 +32,5 @@ jobs:
           nohup python3 test.py > /dev/null 2>&1 &
           sleep 5  # Adjust as needed
 
-      - name: Stop Python server
-        run: |
-          lsof -ti :5000 | xargs kill -9 || true
+    
 
